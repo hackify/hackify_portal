@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<%= render :partial => @event %>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
+
+<h2>Comments</h2>
+<div id="comments">
+  <%= render :partial => @event.comments %>
+</div>
+
+<%= form_for [@event, Comment.new], :remote => true do |f| %>
+  <p>
+    <%= f.label :body, "New comment" %>
+    <%= f.text_area :body, size: "30x10"%>
+  </p>
+  <p><%= f.submit "Add comment" %></p>
+<% end %>
