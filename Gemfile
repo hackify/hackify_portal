@@ -9,6 +9,10 @@ group :development do
   gem 'rails_layout'
 end
 
+group :test do
+  gem 'capybara'
+end
+
 group :development, :test do
   gem 'sqlite3'
   gem "rspec-rails", "~> 2.0"
