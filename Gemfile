@@ -61,3 +61,5 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'omniauth-github'
+gem 'redis'
+# gem 'json'

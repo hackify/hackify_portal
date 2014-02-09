@@ -2,18 +2,27 @@ require 'spec_helper'
 
 feature 'Reading the Events' do
   background do
+    @user = User.create(
+      :provider => "github",
+      :uid => "12345",
+      :name => 'Test User',
+      :email => 'test@user.com',
+      :image => '')
+
     @event = Event.create(
       :title => 'My Cool Event', 
       :room_name => 'my_cool_event', 
       :body => 'Lorem ipsum dolor sit amet',
       :start => DateTime.now,
-      :password => 'abc123')
+      :password => 'abc123',
+      :user => @user)
     Event.create(
       :title => 'Another Cool Event', 
       :room_name => 'another_cool_event', 
       :body => 'Lorem ipsum dolor sit amet',
       :start => DateTime.now,
-      :password => 'abc123')
+      :password => 'abc123',
+      :user => @user)
 
   end
 

@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_filter :store_return_to, :except => [ :index, :show ]
   before_filter :authenticate, :except => [ :index, :show ]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   # GET /events
@@ -31,6 +32,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @event.user = current_user
 
     respond_to do |format|
       if @event.save
@@ -76,11 +78,5 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:title, :room_name, :body, :open, :start, :password)
-    end
-
-    def authenticate
-      authenticate_or_request_with_http_basic do |name, password|
-        name == "admin" && password == "hack1234"
-      end
-    end    
+    end 
 end

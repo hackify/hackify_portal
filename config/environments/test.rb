@@ -33,4 +33,17 @@ HackifyPortal::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  #set up mocks and test mode for Omniauth testing
+  OmniAuth.config.test_mode = true
+
+  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+    :provider => 'github',
+    :uid => '123545',
+    :info => {
+      :name => 'Test User',
+      :email => 'user@test.com',
+      :image => 'http://test/user.png'
+    }
+  })  
 end

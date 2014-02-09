@@ -10,7 +10,7 @@
         <p><%= simple_format event.body %></p>
 
         <% if event.open == true %>
-          <p><%= link_to("Join In!", "/rooms/#{event.room_name}", { :class=>"btn" }) %></p>
+          <p><%= link_to("Join In!", "/rooms/#{event.room_name}", { :class=>"btn btn-primary" }) %></p>
         <% end %>
       </div>
     </div>
@@ -18,17 +18,12 @@
       <div class="col-md-12">
         <p></p>
         <p>
-          <span class="glyphicon glyphicon-user"></span> by <a href="#">Todo</a> 
+          <span class="glyphicon glyphicon-user"></span> by <%= event.user.name %>
           | <span class="glyphicon glyphicon-calendar"></span> <%= distance_of_time_in_words_to_now(event.start) %>
-          | <span class="glyphicon glyphicon-comment"></span> <a href="#"><%= pluralize(event.comments.count, 'Comment') %></a>
-          | <span class="glyphicon glyphicon-share"></span> <a href="#">39 Shares</a>
-          <!-- | <span class="glyphicon glyphicon-tags"></span> Tags : <a href="#"><col-md- class="label label-info">Snipp</col-md-></a>  
-          <a href="#"><col-md- class="label label-info">Bootstrap</col-md-></a> 
-          <a href="#"><col-md- class="label label-info">UI</col-md-></a> 
-          <a href="#"><col-md- class="label label-info">growth</col-md-></a> -->
+          | <span class="glyphicon glyphicon-comment"></span> <span id="comment_counter"><%= pluralize(event.comments.count, 'Comment') %></span>
+          <% if current_user && current_user == event.user %> | <span class="glyphicon glyphicon-pencil"></span> <%= link_to 'Edit', edit_event_path(@event) %><% end %>
         </p>
       </div>
     </div>
   </div>
 </div>
-<hr>

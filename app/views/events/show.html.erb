@@ -2,18 +2,47 @@
 
 <%= render :partial => @event %>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default widget">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-comment"></span>
+                <h3 class="panel-title">Comments</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group" id="comments">
+                  <!-- existing comments -->
+                  <%= render :partial => @event.comments %>
 
-<h2>Comments</h2>
-<div id="comments">
-  <%= render :partial => @event.comments %>
+                  <!-- form for new comments -->
+                  <% if current_user %>
+                    <%= form_for [@event, Comment.new], :remote => true do |f| %>
+                      <li class="list-group-item">
+                          <div class="row">
+                              <div class="col-xs-2 col-md-1">
+                                  <%= image_tag(current_user.image, height: '80', width: '80', class: 'img-circle img-responsive') %></div>
+                              <div class="col-xs-10 col-md-11">
+                                  <div class="comment-text">
+                                      <%= f.text_area :body, size: "100x3"%>
+                                  </div>
+                                  <div class="action">
+                                      <%= f.submit "Add comment" %>
+                                  </div>          
+                              </div>
+                          </div>
+                      </li>
+                    <% end %>
+                  <% end %>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
-<%= form_for [@event, Comment.new], :remote => true do |f| %>
-  <p>
-    <%= f.label :body, "New comment" %>
-    <%= f.text_area :body, size: "30x10"%>
-  </p>
-  <p><%= f.submit "Add comment" %></p>
-<% end %>
+<% if false %>
+    <p>
+      <%= f.label :body, "New comment" %>
+      <%= f.text_area :body, size: "30x10"%>
+    </p>
+    <p><%= f.submit "Add comment" %></p>
+<% end %>  

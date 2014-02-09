@@ -1,9 +1,16 @@
-<%= div_for comment do %>
-  <p>
-    <strong>
-    Posted <%= time_ago_in_words(comment.created_at) %> ago
-    <br/>
-    <%= comment.body %>
-    </strong>
-  </p>
-<% end %>
+<li class="list-group-item">
+    <div class="row">
+        <div class="col-xs-2 col-md-1">
+            <%= image_tag(comment.user.image, height: '80', width: '80', class: 'img-circle img-responsive') %></div>
+        <div class="col-xs-10 col-md-11">
+            <div>
+                <div class="mic-info">
+                    By: <a href="#"><%= comment.user.name %></a> <%= time_ago_in_words(comment.created_at) %> ago
+                </div>
+            </div>
+            <div class="comment-text">
+                <%= comment.body %>
+            </div>
+        </div>
+    </div>
+</li>

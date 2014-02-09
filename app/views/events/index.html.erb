@@ -1,5 +1,7 @@
 <h1>Events</h1>
 
-<%= render :partial => @events %>
-
+<% if current_user %>
 <%= link_to 'New Event', new_event_path %>
+<% end %>
+
+<%= render :partial => @events %>

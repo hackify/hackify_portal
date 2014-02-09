@@ -1,28 +1,29 @@
 require 'spec_helper'
 
 feature 'Managing events' do
+
   scenario 'Guests cannot create events' do
     visit events_path
-    click_link 'New Event'
+    expect(page).to have_no_content 'New Event'
+    visit new_event_path
 
-    expect(page).to have_content 'Access denied'
+    current_path.should == login_path
   end
 
   scenario 'Creating a new event' do
+    # sign in
+    visit login_path
+    click_link 'github'
+
     visit events_path
-
-    page.driver.browser.authorize 'admin', 'hack1234'
-
     click_link 'New Event'
+
 
     expect(page).to have_content 'New event'
 
     fill_in 'Title', :with => 'My Cool Event'
     fill_in 'Room name', :with => 'my_cool_event'
     fill_in 'Body', :with => 'Lorem ipsum dolor sit amet'
-    #fill_in 'Start', :with => DateTime.now
-    # fill_in 'start_1i', :with => '2015'
-    # page.driver.browser.execute_script("$('#event_start_1i').val('2015')")
     
     fill_in 'Password', :with => 'abc123'
 
@@ -32,18 +33,31 @@ feature 'Managing events' do
 
   context 'with an existing event'  do
     background do
+      @user = User.create(
+        :provider => "github",
+        :uid => "123545",
+        :name => 'Test User',
+        :email => 'user@test.com',
+        :image => 'http://test/user.png')
+
       @event = Event.create(
         :title => 'My Cool Event', 
         :room_name => 'my_cool_event', 
         :body => 'Lorem ipsum dolor sit amet',
         :start => DateTime.now,
-        :password => 'abc123')
+        :password => 'abc123',
+        :user => @user)
+    end
+
+    before do
+      # sign in
+      visit login_path
+      click_link 'github'
     end
 
     scenario 'Editing an existing event' do
       visit event_path(@event)
 
-      page.driver.browser.authorize 'admin', 'hack1234'
       click_link 'Edit'
 
       fill_in 'Title', :with => 'Another Title'

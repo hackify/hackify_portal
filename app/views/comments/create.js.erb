@@ -1,2 +1,6 @@
-$('#comments').append('<%= escape_javascript(render :partial => @comment) %>');
+//$('#comments').prepend('<%= escape_javascript(render :partial => @comment) %>')
+$('<%= escape_javascript(render :partial => @comment) %>').insertBefore("#new_comment");
+//$( "<p>Test</p>" ).insertBefore( ".inner" );
+$('#comment_counter').text('<%= pluralize(@comment.event.comments.count, 'Comment') %>')
+
 $('#comment_body').val('')
