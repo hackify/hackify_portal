@@ -20,6 +20,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'unicorn'
 end
 
 # Use SCSS for stylesheets
