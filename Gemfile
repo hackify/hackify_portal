@@ -21,6 +21,7 @@ end
 group :production do
   gem 'pg'
   gem 'unicorn'
+  gem 'kgio'
 end
 
 # Use SCSS for stylesheets
