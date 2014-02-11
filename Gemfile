@@ -19,9 +19,10 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg'
-  gem 'unicorn'
-  gem 'kgio'
+  # gem 'pg'
+  # gem 'unicorn'
+  # gem 'kgio'
+  gem 'mysql2'
 end
 
 # Use SCSS for stylesheets
