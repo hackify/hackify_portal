@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140206122444) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: true do |t|
     t.integer  "event_id"
     t.text     "body"
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140206122444) do
     t.integer  "user_id"
   end
 
-  add_index "comments", ["event_id"], name: "index_comments_on_event_id"
+  add_index "comments", ["event_id"], name: "index_comments_on_event_id", using: :btree
 
   create_table "events", force: true do |t|
     t.string   "title"

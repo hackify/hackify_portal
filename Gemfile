@@ -14,15 +14,7 @@ group :test do
 end
 
 group :development, :test do
-  gem 'sqlite3'
   gem "rspec-rails", "~> 2.0"
-end
-
-group :production do
-  # gem 'pg'
-  # gem 'unicorn'
-  # gem 'kgio'
-  gem 'mysql2'
 end
 
 # Use SCSS for stylesheets
@@ -55,14 +47,14 @@ end
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
+gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
 gem 'omniauth-github'
 gem 'redis'
-# gem 'json'
+gem 'pg'
