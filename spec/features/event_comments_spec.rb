@@ -14,7 +14,6 @@ feature 'Posting Comments' do
       :room_name => 'my_cool_event', 
       :body => 'Lorem ipsum dolor sit amet',
       :start => DateTime.now,
-      :password => 'abc123',
       :user => @user)
   end
 

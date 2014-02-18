@@ -25,8 +25,6 @@ feature 'Managing events' do
     fill_in 'Room name', :with => 'my_cool_event'
     fill_in 'Body', :with => 'Lorem ipsum dolor sit amet'
     
-    fill_in 'Password', :with => 'abc123'
-
     click_button 'Create Event'
     expect(page).to have_content 'My Cool Event'
   end
@@ -45,7 +43,6 @@ feature 'Managing events' do
         :room_name => 'my_cool_event', 
         :body => 'Lorem ipsum dolor sit amet',
         :start => DateTime.now,
-        :password => 'abc123',
         :user => @user)
     end
 

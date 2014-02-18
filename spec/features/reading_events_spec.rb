@@ -14,14 +14,12 @@ feature 'Reading the Events' do
       :room_name => 'my_cool_event', 
       :body => 'Lorem ipsum dolor sit amet',
       :start => DateTime.now,
-      :password => 'abc123',
       :user => @user)
     Event.create(
       :title => 'Another Cool Event', 
       :room_name => 'another_cool_event', 
       :body => 'Lorem ipsum dolor sit amet',
       :start => DateTime.now,
-      :password => 'abc123',
       :user => @user)
 
   end
@@ -40,5 +38,3 @@ feature 'Reading the Events' do
   end
 
 end
-
-#:title, :room_name, :body, :start, :password
