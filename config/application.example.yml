@@ -1,0 +1,10 @@
+ga_tracking_id: "UA-12345678-1"
+development:
+  twitter_key: "xxxxxxxxxxxxxxx"
+  twitter_secret: "xxxxxxxxxxxxxxxxxxxxxx"
+test:
+  twitter_key: "xxxxxxxxxxxxxxx"
+  twitter_secret: "xxxxxxxxxxxxxxxxxxxxxx"
+production:
+  twitter_key: "yyyyyyyyyyyyyy"
+  twitter_secret: "yyyyyyyyyyyyyyyyyyyyyyyyyy"
