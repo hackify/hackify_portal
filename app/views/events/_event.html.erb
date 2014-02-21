@@ -21,7 +21,7 @@
           <span class="glyphicon glyphicon-user"></span> by <%= event.user.name %>
           | <span class="glyphicon glyphicon-calendar"></span> <%= distance_of_time_in_words_to_now(event.start) %>
           | <span class="glyphicon glyphicon-comment"></span> <span id="comment_counter"><%= pluralize(event.comments.count, 'Comment') %></span>
-          <% if current_user && current_user == event.user %> | <span class="glyphicon glyphicon-pencil"></span> <%= link_to 'Edit', edit_event_path(@event) %><% end %>
+          <% if current_user && current_user == event.user %> | <span class="glyphicon glyphicon-pencil"></span> <%= link_to 'Edit', edit_event_path(event) %><% end %>
         </p>
       </div>
     </div>

@@ -58,3 +58,4 @@ gem 'capistrano', '~> 2.15', group: :development
 gem 'omniauth-github'
 gem 'redis'
 gem 'pg'
+gem 'mail_form'

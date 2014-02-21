@@ -1,0 +1,41 @@
+<% if @contact.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this feedback from being sent:</h2>
+
+    <ul>
+    <% @contact.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-sm-4">
+    <h3>Tell us what you think!</h3>
+    <hr>
+    <address>
+      <strong>Our Email:</strong> <a href="mailto:#"> hackify.org@gmail.com</a><br><br>
+    </address>
+  </div>
+  
+  <div class="col-sm-8 contact-form">
+    <%= form_for @contact, url: contacts_path do |f| %>
+      <div class="row">
+        <div class="col-xs-6 col-md-6 form-group">
+          <%= f.text_field :name, :class => "form-control", :required => true, :autofocus => true, :placeholder => 'Your Name' %>
+        </div>
+        <div class="col-xs-6 col-md-6 form-group">
+          <%= f.email_field :email, :class => "form-control", :required => true, :placeholder => 'Your Email' %>
+        </div>
+      </div>
+      <%= f.text_area :message, :class => "form-control", :placeholder => 'Message', :rows => "5" %>
+      <br />
+      <div class="row">
+        <div class="col-xs-12 col-md-12 form-group">
+          <%= f.submit 'Submit', :class => "btn btn-primary pull-right" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
