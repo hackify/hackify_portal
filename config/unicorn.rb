@@ -1,4 +1,3 @@
-ENV['BUNDLE_GEMFILE'] = "/home/deployer/apps/hackify_portal/current/Gemfile"
 root = "/home/deployer/apps/hackify_portal/current"
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
