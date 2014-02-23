@@ -1,7 +1,3 @@
-before_exec do |server|
-  ENV['BUNDLE_GEMFILE'] = "/home/deployer/apps/hackify_portal/current/Gemfile"
-end
-
 root = "/home/deployer/apps/hackify_portal/current"
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
