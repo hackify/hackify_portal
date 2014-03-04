@@ -1,0 +1,49 @@
+<h1>Open Rooms</h1>
+<% @rooms.each do |room| %>
+<div class="row">
+  <div class="col-sm-4 col-md-4 user-details">
+<!--           <div class="user-image">
+              <img src="/assets/code_pic.jpg" class="img-circle">
+          </div> -->
+          <div class="user-info-block">
+              <div class="user-heading">
+                  <h3><%= room.name %></h3>
+              </div>
+              <ul class="navigation">
+                  <li class="active">
+                      <a data-toggle="tab" href="#<%= room.name %>_information">
+                          <span class="glyphicon glyphicon-user"> (<%= room.users.count %>)</span>
+
+                      </a>
+                  </li>
+                  <li>
+                      <a data-toggle="tab" href="#<%= room.name %>_openfiles">
+                          <span class="glyphicon glyphicon-edit"> (<%= room.open_files.count %>)</span>
+                      </a>
+                  </li>
+                  <li>
+                      <%= link_to("/rooms/#{room.name}") do %>
+                          <span class="glyphicon glyphicon-log-in"> Enter Room</span>
+                      <% end %>
+                  </li>                    
+              </ul>
+              <div class="user-body">
+                  <div class="tab-content">
+                      <div id="<%= room.name %>_information" class="tab-pane active">
+                          <h4>Hackers</h4>
+                          <% room.users.each do |user| %>
+                          <%= user['userId'] %>
+                          <% end %>
+                      </div>
+                      <div id="<%= room.name %>_openfiles" class="tab-pane">
+                          <h4>Open Files</h4>
+                          <% room.open_files.each do |open_file| %>
+                          <%= open_file %>
+                          <% end %>                            
+                      </div>                       
+                  </div>
+              </div>
+          </div>
+      </div>
+</div>
+<% end %>

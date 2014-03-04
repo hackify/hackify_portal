@@ -13,6 +13,7 @@ HackifyPortal::Application.routes.draw do
   get 'auth/failure' => redirect('')
   get 'signout' => 'sessions#destroy', as: 'signout'  
   get 'login' => 'sessions#login', as: 'login'
+  get 'openrooms' => 'rooms#index', as: 'openrooms'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
